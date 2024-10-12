@@ -1,0 +1,32 @@
+-- Customer table
+DROP TABLE IF EXISTS CUSTOMER;
+CREATE TABLE CUSTOMER (
+    id BIGINT PRIMARY KEY AUTO_INCREMENT,
+    username VARCHAR(255) NOT NULL UNIQUE,
+    password VARCHAR(255) NOT NULL
+);
+
+-- Asset table
+DROP TABLE IF EXISTS ASSET;
+CREATE TABLE ASSET (
+    id BIGINT PRIMARY KEY AUTO_INCREMENT,
+    customer_id BIGINT NOT NULL,
+    asset_name VARCHAR(255) NOT NULL,
+    asset_size DOUBLE NOT NULL,
+    usable_size DOUBLE NOT NULL,
+    FOREIGN KEY (customer_id) REFERENCES customer(id) ON DELETE CASCADE
+);
+
+-- Order table
+DROP TABLE IF EXISTS ORDERS;
+CREATE TABLE ORDERS (
+    id BIGINT PRIMARY KEY AUTO_INCREMENT,
+    customer_id BIGINT NOT NULL,
+    asset_name VARCHAR(255) NOT NULL,
+    order_side VARCHAR(4) NOT NULL CHECK (order_side IN ('BUY', 'SELL')),
+    order_size DOUBLE NOT NULL,
+    price DOUBLE NOT NULL,
+    order_status VARCHAR(10) NOT NULL CHECK (order_status IN ('PENDING', 'MATCHED', 'CANCELED')),
+    created_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (customer_id) REFERENCES customer(id) ON DELETE CASCADE
+);
