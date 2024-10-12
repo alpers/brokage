@@ -18,6 +18,7 @@ users.
 1. Clone the repository.
 2. Run the application: `mvn spring-boot:run`
 3. The application runs on http://localhost:8080.
+4. Postman Request Collection at [brokage.postman_collection.json](./docs/brokage.postman_collection.json) 
 
 #### H2 Database Console
 
