@@ -13,7 +13,7 @@ users.
 - JWT Authentication
 - Mockito
 
-### Running the Application**
+### Running the Application
 
 1. Clone the repository.
 2. Run the application: `mvn spring-boot:run`
@@ -31,9 +31,7 @@ Access the H2 in-memory database console at http://localhost:8080/h2-console. Us
 ### Authentication
 
 - **Admin Authentication** : Admin users are authenticated using Basic Authentication (username: admin, password: admin)
-- **JWT Token** : Customers authenticate via JWT tokens. They first login via the **/api/login** endpoint to receive a
-  JWT token, which must be included in the Authorization header for subsequent requests. JWT tokens should be included
-  in the Authorization header of the request with the Bearer prefix. Authorization: Bearer
+- **JWT Token** : Customers authenticate via JWT tokens. They first login via the **/api/login** endpoint to receive a JWT token, which must be included in the Authorization header for subsequent requests. JWT tokens should be included in the Authorization header of the request with the Bearer prefix. Authorization: Bearer
 
 ### Features
 
@@ -50,10 +48,10 @@ Access the H2 in-memory database console at http://localhost:8080/h2-console. Us
 
 #### 1. Deposit Money
 
-**Endpoint** : POST /api/order/deposit
-**Description** : Deposit money into the customer’s account.
-**Request Header** : Authorization: Basic (admin)
-**Request Body:**
+- **Endpoint** : POST /api/order/deposit
+- **Description** : Deposit money into the customer’s account.
+- **Request Header** : Authorization: Basic (admin)
+- **Request Body:**
 
 ```
 {
@@ -64,10 +62,10 @@ Access the H2 in-memory database console at http://localhost:8080/h2-console. Us
 
 #### 2. Withdraw Money
 
-**Endpoint** : POST /api/order/withdraw
-**Description** : Deposit money into the customer’s account.
-**Request Header** : Authorization: Basic (admin)
-**Request Body:**
+- **Endpoint** : POST /api/order/withdraw
+- **Description** : Deposit money into the customer’s account.
+- **Request Header** : Authorization: Basic (admin)
+- **Request Body:**
 
 ```
 {
@@ -78,10 +76,10 @@ Access the H2 in-memory database console at http://localhost:8080/h2-console. Us
 
 #### 3. Create a New Order
 
-**Endpoint** :  POST /api/customer/orders
-**Description** : Create a new order for a customer.
-**Request Header** : Authorization: Basic (admin)
-**Request Body** :
+- **Endpoint** :  POST /api/customer/orders
+- **Description** : Create a new order for a customer.
+- **Request Header** : Authorization: Basic (admin)
+- **Request Body** :
 
 ```
 {
@@ -92,8 +90,7 @@ Access the H2 in-memory database console at http://localhost:8080/h2-console. Us
     "price": 50
 }
 ```
-
-**Response:**
+- **Response:**
 
 ```
 {
@@ -110,25 +107,25 @@ Access the H2 in-memory database console at http://localhost:8080/h2-console. Us
 
 #### 4. Cancel a Pending Order
 
-**Endpoint** : DELETE /api/order/orders/{id}
-**Description** : Cancel a pending order by order ID. Only orders with PENDING status can be cancelled.
-**Request Header** : Authorization: Basic (admin)
-**Response** : HTTP 200 OK
+- **Endpoint** : DELETE /api/order/orders/{id}
+- **Description** : Cancel a pending order by order ID. Only orders with PENDING status can be cancelled.
+- **Request Header** : Authorization: Basic (admin)
+- **Response** : HTTP 200 OK
 
 #### 5. Match a Pending Order
 
-**Endpoint** : POST /api/order/match?orderId={}
-**Description** : Match a pending order by order ID.
-**Request Header** : Authorization: Basic (admin)
-**Request** : `/api/order/match?orderId=1`
-**Response** : `Order matched successfully.`
+- **Endpoint** : POST /api/order/match?orderId={}
+- **Description** : Match a pending order by order ID.
+- **Request Header** : Authorization: Basic (admin)
+- **Request** : `/api/order/match?orderId=1`
+- **Response** : `Order matched successfully.`
 
 #### 6. List Customer Assets
 
-**Endpoint** : GET /api/order/assets/{customerId}
-**Description** : List all assets of given customer.
-**Request Header** : Authorization: Basic (admin)
-**Response:**
+- **Endpoint** : GET /api/order/assets/{customerId}
+- **Description** : List all assets of given customer.
+- **Request Header** : Authorization: Basic (admin)
+- **Response:**
 
 ```
 [
@@ -144,11 +141,11 @@ Access the H2 in-memory database console at http://localhost:8080/h2-console. Us
 
 #### 7. List Customer Orders
 
-**Endpoint** : GET /api/order/orders?customerId={}&startDate={}&endDate={}
-**Description** :  List all orders of given customer between given date range.
-**Request Header** : Authorization: Basic (admin)
-**Request** : `/api/order/orders?customerId=1&startDate=2024-10-12T12:40:30&endDate=2024-10-15T18:40:30`
-**Response:**
+- **Endpoint** : GET /api/order/orders?customerId={}&startDate={}&endDate={}
+- **Description** :  List all orders of given customer between given date range.
+- **Request Header** : Authorization: Basic (admin)
+- **Request** : `/api/order/orders?customerId=1&startDate=2024-10-12T12:40:30&endDate=2024-10-15T18:40:30`
+- **Response:**
 
 ```
 [
@@ -167,9 +164,9 @@ Access the H2 in-memory database console at http://localhost:8080/h2-console. Us
 
 #### 8. Customer Login (JWT Authentication)
 
-**Endpoint** : POST /api/login
-**Description** : Customer login endpoint. Returns a JWT token for authenticated users.
-**Request Body** :
+- **Endpoint** : POST /api/login
+- **Description** : Customer login endpoint. Returns a JWT token for authenticated users.
+- **Request Body** :
 
 ```
 {
@@ -177,8 +174,7 @@ Access the H2 in-memory database console at http://localhost:8080/h2-console. Us
 	"password": "password1"
 }
 ```
-
-**Response** :
+- **Response** :
 
 ```
 {
@@ -188,10 +184,10 @@ Access the H2 in-memory database console at http://localhost:8080/h2-console. Us
 
 #### 9. List Customer Orders
 
-**Endpoint** : GET /api/customer/orders
-**Description** : List all orders for the authenticated customer.
-**Request Header** : Authorization: Bearer
-**Response** :
+- **Endpoint** : GET /api/customer/orders
+- **Description** : List all orders for the authenticated customer.
+- **Request Header** : Authorization: Bearer
+- **Response** :
 
 ```
 [
@@ -210,15 +206,14 @@ Access the H2 in-memory database console at http://localhost:8080/h2-console. Us
 
 #### 10. Update Customer Information
 
-**Endpoint** : POST /api/customer/username
-**Description** : Update username or password of authenticated customer.
-**Request Header** : Authorization: Bearer
-**Request Body** :
+- **Endpoint** : POST /api/customer/username
+- **Description** : Update username or password of authenticated customer.
+- **Request Header** : Authorization: Bearer
+- **Request Body** :
 
 ```
 {
 	"username": "customer1a"
 }
 ```
-
-**Response** : HTTP 200 OK
+- **Response** : HTTP 200 OK
